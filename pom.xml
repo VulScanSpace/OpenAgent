@@ -9,16 +9,15 @@
     </modules>
 
     <description>DongTai OpenAgent</description>
-    
+
     <properties>
-        <project.version>0.1.0</project.version>
         <maven.compiler.source>6</maven.compiler.source>
         <maven.compiler.target>6</maven.compiler.target>
     </properties>
 
     <groupId>io.dongtai</groupId>
     <artifactId>OpenAgent</artifactId>
-    <version>${project.version}</version>
+    <version>0.1.0</version>
 
     <profiles>
         <profile>
