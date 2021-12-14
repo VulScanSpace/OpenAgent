@@ -35,6 +35,8 @@ jobs:
 
       - name: Build and Publish Maven Package
         run: |
-          mvn -B versions:set -DnewVersion=${{ steps.get_release_version.outputs.VERSION }} versions:update-child-modules
+          mvn versions:set -DnewVersion=${{ steps.get_release_version.outputs.VERSION }}
+          mvn versions:update-child-modules
+          mvn versions:commit
           mvn -B package -Dmaven.test.skip=true
           mvn -B -DuseGitHubPackages=true deploy
