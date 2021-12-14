@@ -5,18 +5,17 @@
     <parent>
         <artifactId>OpenAgent</artifactId>
         <groupId>io.dongtai</groupId>
-        <version>1.1.0</version>
+        <version>0.1.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>Agent</artifactId>
 
     <properties>
-        <maven.compiler.source>6</maven.compiler.source>
-        <maven.compiler.target>6</maven.compiler.target>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         <shade-prefix>io.dongtai.agent.thridparty</shade-prefix>
         <commons.cli.versin>1.4</commons.cli.versin>
-        <sun.tools.version>1.6</sun.tools.version>
     </properties>
 
     <dependencies>
