@@ -31,8 +31,6 @@ jobs:
 
       - name: Build and Publish Maven Package
         run: |
-          mvn -B versions:set -DnewVersion="${{ steps.release.outputs.VERSION }}"
-          mvn -B versions:update-child-modules
-          mvn -B versions:commit
+          bash .github/workflows/version_update.sh "${{ steps.release.outputs.VERSION }}"
           mvn -B package -Dmaven.test.skip=true
           mvn -B -DuseGitHubPackages=true deploy
