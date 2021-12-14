@@ -23,20 +23,16 @@ jobs:
         with:
           maven-version: 3.2.5
 
-      - name: Get the release version
-        id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
-
-      - name: Get release version
-        id: get_release_version
+      - id: release
         run: |
-          V=`echo ${{ steps.get_version.outputs.VERSION }} | sed -e's/v//g' | sed -e's/V//g'`; \
-          echo ::set-output name=VERSION::${V}
+          TAG_NAME=${{ github.event.release.tag_name }}
+          ID=`echo ${TAG_NAME##v}`
+          echo "::set-output name=VERSION::$ID"
 
       - name: Build and Publish Maven Package
         run: |
-          mvn versions:set -DnewVersion=${{ steps.get_release_version.outputs.VERSION }}
-          mvn versions:update-child-modules
-          mvn versions:commit
+          mvn -B versions:set -DnewVersion="${{ steps.release.outputs.VERSION }}"
+          mvn -B versions:update-child-modules
+          mvn -B versions:commit
           mvn -B package -Dmaven.test.skip=true
           mvn -B -DuseGitHubPackages=true deploy
