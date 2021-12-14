@@ -34,3 +34,5 @@ jobs:
           bash .github/workflows/version_update.sh "${{ steps.release.outputs.VERSION }}"
           mvn -B package -Dmaven.test.skip=true
           mvn -B -DuseGitHubPackages=true deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
