@@ -31,7 +31,7 @@
             <repositories>
                 <repository>
                     <id>github</id>
-                    <url>https://maven.pkg.github.com/HXSecurity/DongTai-agent-java</url>
+                    <url>https://maven.pkg.github.com/HXSecurity/OpenAgent</url>
                     <snapshots>
                         <enabled>true</enabled>
                     </snapshots>
@@ -44,7 +44,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/HXSecurity/DongTai-agent-java</url>
+            <url>https://maven.pkg.github.com/HXSecurity/OpenAgent</url>
         </repository>
     </distributionManagement>
 
