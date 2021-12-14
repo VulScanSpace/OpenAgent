@@ -17,8 +17,8 @@
 name: Dead Link Checker
 
 on:
-  push
-  pull_request
+  push:
+  pull_request:
 
 concurrency:
   group: dlc-${{ github.event.pull_request.number || github.ref }}
