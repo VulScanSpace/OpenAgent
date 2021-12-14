@@ -17,7 +17,7 @@
 
     <groupId>io.dongtai</groupId>
     <artifactId>OpenAgent</artifactId>
-    <version>0.1.1</version>
+    <version>0.13.0</version>
 
     <profiles>
         <profile>
