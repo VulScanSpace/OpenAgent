@@ -3,6 +3,7 @@ package io.dongtai.agent;
 import io.dongtai.agent.plugins.ILoader;
 import io.dongtai.agent.plugins.dongtai.IastLoader;
 import io.dongtai.agent.plugins.dongtai.SoftPatchLoader;
+import io.dongtai.agent.plugins.nop.NoAgentLoader;
 import io.dongtai.agent.plugins.openrrasp.OpenRaspLoader;
 import java.io.File;
 import java.lang.instrument.Instrumentation;
@@ -63,7 +64,7 @@ public class Main {
      */
     public static void premain(String args, Instrumentation inst) {
         String[] agentArgs = parseArgs(args);
-        String mode = System.getProperty("agent.mode", "iast");
+        String mode = System.getProperty("agent.mode", "NoAgent");
         ILoader loader = null;
         LogUtils.info("OpenAgent mode: " + mode);
         if ("iast".equals(mode)) {
@@ -73,7 +74,7 @@ public class Main {
         } else if ("soft-patch".equals(mode)) {
             loader = new SoftPatchLoader(agentArgs[0]);
         } else {
-            loader = new IastLoader(agentArgs[0]);
+            loader = new NoAgentLoader(agentArgs[0]);
         }
         loader.premain(agentArgs.length == 2 ? agentArgs[1] : null, inst);
     }
@@ -86,7 +87,7 @@ public class Main {
      */
     public static void agentmain(String args, Instrumentation inst) {
         String[] agentArgs = parseArgs(args);
-        String mode = System.getProperty("agent.mode", "iast");
+        String mode = System.getProperty("agent.mode", "NoAgent");
         ILoader loader = null;
         LogUtils.info("OpenAgent mode: " + mode);
         if ("iast".equals(mode)) {
@@ -96,7 +97,7 @@ public class Main {
         } else if ("soft-patch".equals(mode)) {
             loader = new SoftPatchLoader(agentArgs[0]);
         } else {
-            loader = new IastLoader(agentArgs[0]);
+            loader = new NoAgentLoader(agentArgs[0]);
         }
         loader.agentmain(agentArgs.length == 2 ? agentArgs[1] : null, inst);
     }
